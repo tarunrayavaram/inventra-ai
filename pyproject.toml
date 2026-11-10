@@ -1,0 +1,100 @@
+[project]
+name = "inventra"
+version = "2.1.0"
+description = "AI-Powered Inventory & Financial Management System using LangGraph and Gemini AI"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "GenAI Live Course Team" }
+]
+keywords = [
+    "ai",
+    "inventory-management",
+    "financial-analysis",
+    "langgraph",
+    "gemini",
+    "google-generativeai",
+    "multi-agent",
+    "streamlit"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "langchain>=0.3.7",
+    "langchain-google-genai>=2.0.0",
+    "langgraph>=0.2.45",
+    "pandas==2.2.3",
+    "numpy>=2.0.0",
+    "requests==2.32.3",
+    "pydantic>=2.10.3",
+    "pydantic-settings>=2.6.1",
+    "streamlit>=1.66.1",
+    "altair>=6.3.0",
+    "python-dotenv==1.0.1",
+    "mcp>=1.26.0",
+    "httpx>=0.27.2",
+    "langchain-mcp>=0.2.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.5.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/programteam-cn/GenAI-Live-Course-Project-5-Intelligent-Financial-and-Inventory-Management"
+Repository = "https://github.com/programteam-cn/GenAI-Live-Course-Project-5-Intelligent-Financial-and-Inventory-Management"
+Documentation = "https://github.com/programteam-cn/GenAI-Live-Course-Project-5-Intelligent-Financial-and-Inventory-Management/blob/main/README.md"
+
+[project.scripts]
+inventra = "main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agents", "config", "database", "integrations", "services", "tools", "ui"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=. --cov-report=term-missing"
